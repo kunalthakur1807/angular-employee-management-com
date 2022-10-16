@@ -1,0 +1,84 @@
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="text-end mt-5">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#employeeModel" (click)="resetForm()">
+                Add Employee
+              </button>
+        </div>
+        <div class="col-md-12 mt-2">
+            <h5 class="text-danger"> Employee List</h5>
+            <div class="card p-3 shadow">
+                <div class="card-body">
+                    <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th scope="col">First name</th>
+                            <th scope="col">Last name</th>
+                            <th scope="col">Age</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Mobile</th>
+                            <th scope="col">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let employee of employeeList">
+                            <td >{{employee.first_name}}</td>
+                            <td>{{employee.last_name}}</td>
+                            <td>{{employee.age}}</td>
+                            <td>{{employee.email}}</td>
+                            <td>{{employee.mobile}}</td>
+                            <td>
+                                <button class="btn btn-outline-danger me-2"  data-bs-toggle="modal" data-bs-target="#employeeModel" (click)="editContactList(employee)" >Edit</button>
+                            
+                                <button class="btn btn-outline-danger" (click)="deleteemployee(employee)">Delete</button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="modal fade" id="employeeModel" tabindex="-1" aria-labelledby="employeeModelLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="employeeModelLabel">Add Employee</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="firstName" name="firstname" [(ngModel)]="first_name">
+                <label for="firstname">First name</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="lastName" name="lastName" [(ngModel)]="last_name">
+                <label for="lastName">Last name</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="age" name="age" [(ngModel)]="age">
+                <label for="lastName">Age</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="email" name="email" [(ngModel)]="email">
+                <label for="email">Email address</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="mobile" name="mobile" [(ngModel)]="mobile">
+                <label for="mobile">Mobile</label>
+            </div>
+            <button type="button" class="btn btn-outline-success w-100" (click)="addemployee()">Add/Update Employee</button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
